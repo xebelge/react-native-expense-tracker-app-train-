@@ -17,15 +17,15 @@ function ManageExpenses({ route }) {
     }, [navigation, isEditing]);
 
     function deleteExpenseHandler() {
-
+        navigation.goBack();
     }
 
     function cancelHandler() {
-
+        navigation.goBack();
     }
 
     function confirmHandler() {
-
+        navigation.goBack();
     }
 
     return (
