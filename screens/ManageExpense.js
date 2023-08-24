@@ -28,11 +28,11 @@ function ManageExpenses({ route }) {
         navigation.goBack();
     }
 
-    function confirmHandler() {
+    function confirmHandler(expenseData) {
         if (isEditing) {
             expensesCtx.updateExpense(editedExpenseId, expenseData);
         } else {
-            expensesCtx.updateExpense(expenseData);
+            expensesCtx.addExpense(expenseData);
         }
         navigation.goBack();
     }

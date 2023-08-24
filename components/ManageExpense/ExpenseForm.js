@@ -21,17 +21,17 @@ function ExpenseForm({ submitButtonLabel, onCancel, onSubmit }) {
     }
 
     function submitHandler() {
-        const expenseData = {
+        const newExpenseData = {
             amount: +inputs.amount,
             date: new Date(inputs.date),
             description: inputs.description,
         };
 
-        onSubmit(expenseData);
+        onSubmit(newExpenseData);
     }
 
     return <View style={styles.form}>
-        <Text style={styles.title}>Expense Add</Text>
+        <Text style={styles.title}>Expense</Text>
         <View style={styles.inputsRow}>
             <Input style={styles.rowInput} label="Amount" textInputConfig={{
                 keyboardType: "decimal-pad",
@@ -61,7 +61,7 @@ export default ExpenseForm;
 
 const styles = StyleSheet.create({
     form: {
-        marginTop: 100
+        marginTop: 80
     },
     title: {
         fontSize: 24,
