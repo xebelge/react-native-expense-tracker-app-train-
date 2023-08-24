@@ -21,14 +21,36 @@ function ExpenseForm({ submitButtonLabel, onCancel, onSubmit, defaultValues }) {
         });
     }
 
-    function submitHandler() {
-        const expenseData = {
-            amount: +inputs.amount,
-            date: new Date(inputs.date),
-            description: inputs.description,
-        };
+    function validateInputs(inputs) {
+        const errors = {};
 
-        onSubmit(expenseData);
+        if (!/^\d+(\.\d{1,2})?$/.test(inputs.amount)) {
+            errors.amount = "Invalid amount format. Use digits and optionally up to 2 decimal places.";
+        }
+
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(inputs.date)) {
+            errors.date = "Invalid date format. Use YYYY-MM-DD.";
+        }
+
+        return errors;
+    }
+
+    function submitHandler() {
+        const errors = validateInputs(inputs);
+
+        if (Object.keys(errors).length === 0) {
+            const expenseData = {
+                amount: +inputs.amount,
+                date: new Date(inputs.date),
+                description: inputs.description,
+            };
+
+            onSubmit(expenseData);
+        } else {
+            const errorMessage = "Please correct the following errors:\n" +
+                Object.values(errors).join("\n");
+            Alert.alert("Validation Error", errorMessage);
+        }
     }
 
     return <View style={styles.form}>
