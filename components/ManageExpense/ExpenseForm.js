@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import Input from "./Input";
 
 function ExpenseForm() {
@@ -7,16 +7,19 @@ function ExpenseForm() {
 
     }
 
-    return <View>
-        <Input label="Amount" textInputConfig={{
-            keyboardType: "decimal-pad",
-            onChangeText: amountChangedHandler,
-        }} />
-        <Input label="Date" textInputConfig={{
-            placeholder: "YYYY-MM-DD",
-            maxLength: 10,
-            onChangeText: () => { }
-        }} />
+    return <View style={styles.form}>
+        <Text style={styles.title}>Expense Add</Text>
+        <View style={styles.inputsRow}>
+            <Input style={styles.rowInput} label="Amount" textInputConfig={{
+                keyboardType: "decimal-pad",
+                onChangeText: amountChangedHandler,
+            }} />
+            <Input style={styles.rowInput} label="Date" textInputConfig={{
+                placeholder: "YYYY-MM-DD",
+                maxLength: 10,
+                onChangeText: () => { }
+            }} />
+        </View>
         <Input label="Description" textInputConfig={{
             multiline: true,
         }} />
@@ -24,3 +27,23 @@ function ExpenseForm() {
 }
 
 export default ExpenseForm;
+
+const styles = StyleSheet.create({
+    form: {
+        marginTop: 100
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "white",
+        textAlign: "center",
+        marginVertical: 24,
+    },
+    inputsRow: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    rowInput: {
+        flex: 1
+    }
+});
