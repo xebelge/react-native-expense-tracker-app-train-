@@ -34,14 +34,14 @@ function ManageExpenses({ route }) {
                 {
                     description: "Test!!!!",
                     amount: 29.99,
-                    date: new Date("2022-05-20")
+                    date: new Date("2023-08-24")
                 });
         } else {
             expensesCtx.addExpense(
                 {
                     description: "Test",
                     amount: 19.99,
-                    date: new Date("2022-05-19")
+                    date: new Date("2023-08-24")
                 }
             );
         }
