@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
 import Button from "../UI/Button";
@@ -22,13 +22,13 @@ function ExpenseForm({ submitButtonLabel, onCancel, onSubmit, defaultValues }) {
     }
 
     function submitHandler() {
-        const newExpenseData = {
+        const expenseData = {
             amount: +inputs.amount,
             date: new Date(inputs.date),
             description: inputs.description,
         };
 
-        onSubmit(newExpenseData);
+        onSubmit(expenseData);
     }
 
     return <View style={styles.form}>
