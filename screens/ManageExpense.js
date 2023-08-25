@@ -57,10 +57,6 @@ function ManageExpenses({ route }) {
         }
     }
 
-    if (error && !isSubmitting) {
-        return <ErrorOverlay message={error} />
-    }
-
     if (isSubmitting) {
         return <LoadingOverlay />;
     }
